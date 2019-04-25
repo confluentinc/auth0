@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"gopkg.in/auth0.v1"
-	"gopkg.in/auth0.v1/management"
+	"github.com/confluentinc/auth0"
+	"github.com/confluentinc/auth0/management"
 )
 
 var (

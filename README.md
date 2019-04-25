@@ -1,3 +1,5 @@
+# Fork of github.com/go-auth0/auth0 compatible with Go 1.11.
+
 # Auth0 Go SDK
 
 [![GoDoc](https://godoc.org/gopkg.in/auth0.v1?status.svg)](https://godoc.org/gopkg.in/auth0.v1)
@@ -17,8 +19,8 @@ The Auth0 Management API is meant to be used by back-end servers or trusted part
 
 ```go
 import (
-	gopkg.in/auth0.v1
-	gopkg.in/auth0.v1/management
+	"github.com/confluentinc/auth0"
+	"github.com/confluentinc/auth0/management"
 )
 ```
 

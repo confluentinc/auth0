@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"gopkg.in/auth0.v1"
+	"github.com/confluentinc/auth0"
 )
 
 var logTypeName = map[string]string{

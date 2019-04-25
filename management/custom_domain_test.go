@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"gopkg.in/auth0.v1"
+	"github.com/confluentinc/auth0"
 )
 
 func TestCustomDomain(t *testing.T) {

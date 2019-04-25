@@ -1,6 +1,6 @@
-module gopkg.in/auth0.v1
+module github.com/confluentinc/auth0
 
-go 1.12
+go 1.11
 
 require (
 	github.com/PuerkitoBio/rehttp v0.0.0-20180310210549-11cf6ea5d3e9

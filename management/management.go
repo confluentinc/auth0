@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"gopkg.in/auth0.v1/internal/client"
+	"github.com/confluentinc/auth0/internal/client"
 )
 
 // Management is an Auth0 management client used to interact with the Auth0
