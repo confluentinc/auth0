@@ -90,6 +90,19 @@ func (u *User) String() string {
 	return string(b)
 }
 
+type UserManagerInterface interface {
+	Create(u *User) error
+	Read(id string, opts ...reqOption) (*User, error)
+	Update(id string, u *User) (err error)
+	Delete(id string) (err error)
+	List(opts ...reqOption) (us []*User, err error)
+	Search(opts ...reqOption) (us []*User, err error)
+	ListByEmail(email string, opts ...reqOption) (us []*User, err error)
+	GetRoles(id string, opts ...reqOption) (roles []*Role, err error)
+	AssignRoles(id string, roles ...*Role) error
+	UnassignRoles(id string, roles ...*Role) error
+}
+
 type UserManager struct {
 	m *Management
 }
