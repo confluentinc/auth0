@@ -5,6 +5,13 @@ import (
 	"time"
 )
 
+type Identity struct {
+	Connection *string `json:"connection,omitempty"`
+	UserID     *string `json:"user_id,omitempty"`
+	Provider   *string `json:"provider,omitempty"`
+	IsSocial   *bool   `json:"isSocial,omitempty"`
+}
+
 type User struct {
 
 	// The users identifier.
@@ -18,6 +25,12 @@ type User struct {
 
 	// The users name
 	Name *string `json:"name,omitempty"`
+
+	// The users given name
+	GivenName *string `json:"given_name,omitempty"`
+
+	// The users family name
+	FamilyName *string `json:"family_name,omitempty"`
 
 	// The user's username. Only valid if the connection requires a username
 	Username *string `json:"username,omitempty"`
@@ -45,6 +58,8 @@ type User struct {
 	// color_preference, blog_url, etc).
 	UserMetadata map[string]interface{} `json:"user_metadata,omitempty"`
 
+	Identities []*Identity `json:"identities,omitempty"`
+
 	// True if the user's email is verified, false otherwise. If it is true then
 	// the user will not receive a verification email, unless verify_email: true
 	// was specified.
@@ -65,11 +80,27 @@ type User struct {
 	// AppMetadata holds data that the user has read-only access to (e.g. roles,
 	// permissions, vip, etc).
 	AppMetadata map[string]interface{} `json:"app_metadata,omitempty"`
+
+	// The user's picture url
+	Picture *string `json:"picture,omitempty"`
 }
 
 func (u *User) String() string {
 	b, _ := json.MarshalIndent(u, "", "  ")
 	return string(b)
+}
+
+type UserManagerInterface interface {
+	Create(u *User) error
+	Read(id string, opts ...reqOption) (*User, error)
+	Update(id string, u *User) (err error)
+	Delete(id string) (err error)
+	List(opts ...reqOption) (us []*User, err error)
+	Search(opts ...reqOption) (us []*User, err error)
+	ListByEmail(email string, opts ...reqOption) (us []*User, err error)
+	GetRoles(id string, opts ...reqOption) (roles []*Role, err error)
+	AssignRoles(id string, roles ...*Role) error
+	UnassignRoles(id string, roles ...*Role) error
 }
 
 type UserManager struct {
