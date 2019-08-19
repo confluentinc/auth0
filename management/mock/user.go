@@ -7,44 +7,44 @@ package mock
 import (
 	sync "sync"
 
-	github_com_laura_brouckman_auth0_management "github.com/laura-brouckman/auth0/management"
+	github_com_confluentinc_auth0_management "github.com/confluentinc/auth0/management"
 )
 
 // MockUserManagerInterface is a mock of UserManagerInterface interface
 type MockUserManagerInterface struct {
 	lockCreate sync.Mutex
-	CreateFunc func(u *github_com_laura_brouckman_auth0_management.User) error
+	CreateFunc func(u *github_com_confluentinc_auth0_management.User) error
 
 	lockRead sync.Mutex
-	ReadFunc func(id string, opts ...reqOption) (*github_com_laura_brouckman_auth0_management.User, error)
+	ReadFunc func(id string) (*github_com_confluentinc_auth0_management.User, error)
 
 	lockUpdate sync.Mutex
-	UpdateFunc func(id string, u *github_com_laura_brouckman_auth0_management.User) error
+	UpdateFunc func(id string, u *github_com_confluentinc_auth0_management.User) error
 
 	lockDelete sync.Mutex
 	DeleteFunc func(id string) error
 
 	lockList sync.Mutex
-	ListFunc func(opts ...reqOption) ([]*github_com_laura_brouckman_auth0_management.User, error)
+	ListFunc func() ([]*github_com_confluentinc_auth0_management.User, error)
 
 	lockSearch sync.Mutex
-	SearchFunc func(opts ...reqOption) ([]*github_com_laura_brouckman_auth0_management.User, error)
+	SearchFunc func() ([]*github_com_confluentinc_auth0_management.User, error)
 
 	lockListByEmail sync.Mutex
-	ListByEmailFunc func(email string, opts ...reqOption) ([]*github_com_laura_brouckman_auth0_management.User, error)
+	ListByEmailFunc func(email string) ([]*github_com_confluentinc_auth0_management.User, error)
 
 	lockGetRoles sync.Mutex
-	GetRolesFunc func(id string, opts ...reqOption) ([]*github_com_laura_brouckman_auth0_management.Role, error)
+	GetRolesFunc func(id string) ([]*github_com_confluentinc_auth0_management.Role, error)
 
 	lockAssignRoles sync.Mutex
-	AssignRolesFunc func(id string, roles ...*github_com_laura_brouckman_auth0_management.Role) error
+	AssignRolesFunc func(id string, roles ...*github_com_confluentinc_auth0_management.Role) error
 
 	lockUnassignRoles sync.Mutex
-	UnassignRolesFunc func(id string, roles ...*github_com_laura_brouckman_auth0_management.Role) error
+	UnassignRolesFunc func(id string, roles ...*github_com_confluentinc_auth0_management.Role) error
 
 	calls struct {
 		Create []struct {
-			U *github_com_laura_brouckman_auth0_management.User
+			U *github_com_confluentinc_auth0_management.User
 		}
 		Read []struct {
 			Id   string
@@ -52,7 +52,7 @@ type MockUserManagerInterface struct {
 		}
 		Update []struct {
 			Id string
-			U  *github_com_laura_brouckman_auth0_management.User
+			U  *github_com_confluentinc_auth0_management.User
 		}
 		Delete []struct {
 			Id string
@@ -73,17 +73,17 @@ type MockUserManagerInterface struct {
 		}
 		AssignRoles []struct {
 			Id    string
-			Roles []*github_com_laura_brouckman_auth0_management.Role
+			Roles []*github_com_confluentinc_auth0_management.Role
 		}
 		UnassignRoles []struct {
 			Id    string
-			Roles []*github_com_laura_brouckman_auth0_management.Role
+			Roles []*github_com_confluentinc_auth0_management.Role
 		}
 	}
 }
 
 // Create mocks base method by wrapping the associated func.
-func (m *MockUserManagerInterface) Create(u *github_com_laura_brouckman_auth0_management.User) error {
+func (m *MockUserManagerInterface) Create(u *github_com_confluentinc_auth0_management.User) error {
 	m.lockCreate.Lock()
 	defer m.lockCreate.Unlock()
 
@@ -92,7 +92,7 @@ func (m *MockUserManagerInterface) Create(u *github_com_laura_brouckman_auth0_ma
 	}
 
 	call := struct {
-		U *github_com_laura_brouckman_auth0_management.User
+		U *github_com_confluentinc_auth0_management.User
 	}{
 		U: u,
 	}
@@ -112,7 +112,7 @@ func (m *MockUserManagerInterface) CreateCalled() bool {
 
 // CreateCalls returns the calls made to Create.
 func (m *MockUserManagerInterface) CreateCalls() []struct {
-	U *github_com_laura_brouckman_auth0_management.User
+	U *github_com_confluentinc_auth0_management.User
 } {
 	m.lockCreate.Lock()
 	defer m.lockCreate.Unlock()
@@ -121,7 +121,7 @@ func (m *MockUserManagerInterface) CreateCalls() []struct {
 }
 
 // Read mocks base method by wrapping the associated func.
-func (m *MockUserManagerInterface) Read(id string, opts ...reqOption) (*github_com_laura_brouckman_auth0_management.User, error) {
+func (m *MockUserManagerInterface) Read(id string) (*github_com_confluentinc_auth0_management.User, error) {
 	m.lockRead.Lock()
 	defer m.lockRead.Unlock()
 
@@ -162,7 +162,7 @@ func (m *MockUserManagerInterface) ReadCalls() []struct {
 }
 
 // Update mocks base method by wrapping the associated func.
-func (m *MockUserManagerInterface) Update(id string, u *github_com_laura_brouckman_auth0_management.User) error {
+func (m *MockUserManagerInterface) Update(id string, u *github_com_confluentinc_auth0_management.User) error {
 	m.lockUpdate.Lock()
 	defer m.lockUpdate.Unlock()
 
@@ -172,7 +172,7 @@ func (m *MockUserManagerInterface) Update(id string, u *github_com_laura_brouckm
 
 	call := struct {
 		Id string
-		U  *github_com_laura_brouckman_auth0_management.User
+		U  *github_com_confluentinc_auth0_management.User
 	}{
 		Id: id,
 		U:  u,
@@ -194,7 +194,7 @@ func (m *MockUserManagerInterface) UpdateCalled() bool {
 // UpdateCalls returns the calls made to Update.
 func (m *MockUserManagerInterface) UpdateCalls() []struct {
 	Id string
-	U  *github_com_laura_brouckman_auth0_management.User
+	U  *github_com_confluentinc_auth0_management.User
 } {
 	m.lockUpdate.Lock()
 	defer m.lockUpdate.Unlock()
@@ -241,7 +241,7 @@ func (m *MockUserManagerInterface) DeleteCalls() []struct {
 }
 
 // List mocks base method by wrapping the associated func.
-func (m *MockUserManagerInterface) List(opts ...reqOption) ([]*github_com_laura_brouckman_auth0_management.User, error) {
+func (m *MockUserManagerInterface) List() ([]*github_com_confluentinc_auth0_management.User, error) {
 	m.lockList.Lock()
 	defer m.lockList.Unlock()
 
@@ -279,7 +279,7 @@ func (m *MockUserManagerInterface) ListCalls() []struct {
 }
 
 // Search mocks base method by wrapping the associated func.
-func (m *MockUserManagerInterface) Search(opts ...reqOption) ([]*github_com_laura_brouckman_auth0_management.User, error) {
+func (m *MockUserManagerInterface) Search() ([]*github_com_confluentinc_auth0_management.User, error) {
 	m.lockSearch.Lock()
 	defer m.lockSearch.Unlock()
 
@@ -317,7 +317,7 @@ func (m *MockUserManagerInterface) SearchCalls() []struct {
 }
 
 // ListByEmail mocks base method by wrapping the associated func.
-func (m *MockUserManagerInterface) ListByEmail(email string, opts ...reqOption) ([]*github_com_laura_brouckman_auth0_management.User, error) {
+func (m *MockUserManagerInterface) ListByEmail(email string) ([]*github_com_confluentinc_auth0_management.User, error) {
 	m.lockListByEmail.Lock()
 	defer m.lockListByEmail.Unlock()
 
@@ -358,7 +358,7 @@ func (m *MockUserManagerInterface) ListByEmailCalls() []struct {
 }
 
 // GetRoles mocks base method by wrapping the associated func.
-func (m *MockUserManagerInterface) GetRoles(id string, opts ...reqOption) ([]*github_com_laura_brouckman_auth0_management.Role, error) {
+func (m *MockUserManagerInterface) GetRoles(id string) ([]*github_com_confluentinc_auth0_management.Role, error) {
 	m.lockGetRoles.Lock()
 	defer m.lockGetRoles.Unlock()
 
@@ -399,7 +399,7 @@ func (m *MockUserManagerInterface) GetRolesCalls() []struct {
 }
 
 // AssignRoles mocks base method by wrapping the associated func.
-func (m *MockUserManagerInterface) AssignRoles(id string, roles ...*github_com_laura_brouckman_auth0_management.Role) error {
+func (m *MockUserManagerInterface) AssignRoles(id string, roles ...*github_com_confluentinc_auth0_management.Role) error {
 	m.lockAssignRoles.Lock()
 	defer m.lockAssignRoles.Unlock()
 
@@ -409,7 +409,7 @@ func (m *MockUserManagerInterface) AssignRoles(id string, roles ...*github_com_l
 
 	call := struct {
 		Id    string
-		Roles []*github_com_laura_brouckman_auth0_management.Role
+		Roles []*github_com_confluentinc_auth0_management.Role
 	}{
 		Id:    id,
 		Roles: roles,
@@ -431,7 +431,7 @@ func (m *MockUserManagerInterface) AssignRolesCalled() bool {
 // AssignRolesCalls returns the calls made to AssignRoles.
 func (m *MockUserManagerInterface) AssignRolesCalls() []struct {
 	Id    string
-	Roles []*github_com_laura_brouckman_auth0_management.Role
+	Roles []*github_com_confluentinc_auth0_management.Role
 } {
 	m.lockAssignRoles.Lock()
 	defer m.lockAssignRoles.Unlock()
@@ -440,7 +440,7 @@ func (m *MockUserManagerInterface) AssignRolesCalls() []struct {
 }
 
 // UnassignRoles mocks base method by wrapping the associated func.
-func (m *MockUserManagerInterface) UnassignRoles(id string, roles ...*github_com_laura_brouckman_auth0_management.Role) error {
+func (m *MockUserManagerInterface) UnassignRoles(id string, roles ...*github_com_confluentinc_auth0_management.Role) error {
 	m.lockUnassignRoles.Lock()
 	defer m.lockUnassignRoles.Unlock()
 
@@ -450,7 +450,7 @@ func (m *MockUserManagerInterface) UnassignRoles(id string, roles ...*github_com
 
 	call := struct {
 		Id    string
-		Roles []*github_com_laura_brouckman_auth0_management.Role
+		Roles []*github_com_confluentinc_auth0_management.Role
 	}{
 		Id:    id,
 		Roles: roles,
@@ -472,7 +472,7 @@ func (m *MockUserManagerInterface) UnassignRolesCalled() bool {
 // UnassignRolesCalls returns the calls made to UnassignRoles.
 func (m *MockUserManagerInterface) UnassignRolesCalls() []struct {
 	Id    string
-	Roles []*github_com_laura_brouckman_auth0_management.Role
+	Roles []*github_com_confluentinc_auth0_management.Role
 } {
 	m.lockUnassignRoles.Lock()
 	defer m.lockUnassignRoles.Unlock()
