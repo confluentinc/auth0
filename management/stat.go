@@ -33,7 +33,7 @@ func (ds *DailyStat) String() string {
 	return string(b)
 }
 
-func (sm *StatManager) Daily(opts ...reqOption) ([]*DailyStat, error) {
+func (sm *StatManager) Daily(opts ...ReqOption) ([]*DailyStat, error) {
 	var ds []*DailyStat
 	err := sm.m.get(sm.m.uri("stats/daily")+sm.m.q(opts), &ds)
 	return ds, err

@@ -44,7 +44,7 @@ func (rm *RoleManager) Create(r *Role) error {
 	return rm.m.post(rm.m.uri("roles"), r)
 }
 
-func (rm *RoleManager) Read(id string, opts ...reqOption) (*Role, error) {
+func (rm *RoleManager) Read(id string, opts ...ReqOption) (*Role, error) {
 	r := new(Role)
 	err := rm.m.get(rm.m.uri("roles", id)+rm.m.q(opts), r)
 	return r, err
@@ -58,7 +58,7 @@ func (rm *RoleManager) Delete(id string) (err error) {
 	return rm.m.delete(rm.m.uri("roles", id))
 }
 
-func (rm *RoleManager) List(opts ...reqOption) ([]*Role, error) {
+func (rm *RoleManager) List(opts ...ReqOption) ([]*Role, error) {
 	var r []*Role
 	err := rm.m.get(rm.m.uri("roles")+rm.m.q(opts), &r)
 	return r, err
@@ -73,7 +73,7 @@ func (rm *RoleManager) AssignUsers(id string, users ...*User) error {
 	return rm.m.post(rm.m.uri("roles", id, "users"), &u)
 }
 
-func (rm *RoleManager) Users(id string, opts ...reqOption) ([]*User, error) {
+func (rm *RoleManager) Users(id string, opts ...ReqOption) ([]*User, error) {
 	var u []*User
 	err := rm.m.get(rm.m.uri("roles", id, "users")+rm.m.q(opts), &u)
 	return u, err
@@ -85,7 +85,7 @@ func (rm *RoleManager) AssignPermissions(id string, permissions ...*Permission) 
 	return rm.m.post(rm.m.uri("roles", id, "permissions"), &p)
 }
 
-func (rm *RoleManager) Permissions(id string, opts ...reqOption) ([]*Permission, error) {
+func (rm *RoleManager) Permissions(id string, opts ...ReqOption) ([]*Permission, error) {
 	var p []*Permission
 	err := rm.m.get(rm.m.uri("roles", id, "permissions")+rm.m.q(opts), &p)
 	return p, err

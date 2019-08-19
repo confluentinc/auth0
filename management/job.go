@@ -77,7 +77,7 @@ func (jm *JobManager) VerifyEmail(j *Job) error {
 	return jm.m.post(jm.m.uri("jobs/verification-email"), j)
 }
 
-func (jm *JobManager) Read(id string, opts ...reqOption) (*Job, error) {
+func (jm *JobManager) Read(id string, opts ...ReqOption) (*Job, error) {
 	j := new(Job)
 	err := jm.m.get(jm.m.uri("jobs", id)+jm.m.q(opts), j)
 	return j, err

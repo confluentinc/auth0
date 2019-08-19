@@ -32,7 +32,7 @@ func NewGrantManager(m *Management) *GrantManager {
 	return &GrantManager{m}
 }
 
-func (gm *GrantManager) List(opts ...reqOption) ([]*Grant, error) {
+func (gm *GrantManager) List(opts ...ReqOption) ([]*Grant, error) {
 	var g []*Grant
 	err := gm.m.get(gm.m.uri("grants")+gm.m.q(opts), &g)
 	return g, err

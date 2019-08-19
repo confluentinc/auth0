@@ -90,11 +90,24 @@ func (u *User) String() string {
 	return string(b)
 }
 
+type UserManagerInterface interface {
+	Create(u *User) error
+	Read(id string, opts ...ReqOption) (*User, error)
+	Update(id string, u *User) (err error)
+	Delete(id string) (err error)
+	List(opts ...ReqOption) (us []*User, err error)
+	Search(opts ...ReqOption) (us []*User, err error)
+	ListByEmail(email string, opts ...ReqOption) (us []*User, err error)
+	GetRoles(id string, opts ...ReqOption) (roles []*Role, err error)
+	AssignRoles(id string, roles ...*Role) error
+	UnassignRoles(id string, roles ...*Role) error
+}
+
 type UserManager struct {
 	m *Management
 }
 
-func NewUserManager(m *Management) *UserManager {
+func NewUserManager(m *Management) UserManagerInterface {
 	return &UserManager{m}
 }
 
@@ -102,7 +115,7 @@ func (um *UserManager) Create(u *User) error {
 	return um.m.post(um.m.uri("users"), u)
 }
 
-func (um *UserManager) Read(id string, opts ...reqOption) (*User, error) {
+func (um *UserManager) Read(id string, opts ...ReqOption) (*User, error) {
 	u := new(User)
 	err := um.m.get(um.m.uri("users", id)+um.m.q(opts), u)
 	return u, err
@@ -116,22 +129,22 @@ func (um *UserManager) Delete(id string) (err error) {
 	return um.m.delete(um.m.uri("users", id))
 }
 
-func (um *UserManager) List(opts ...reqOption) (us []*User, err error) {
+func (um *UserManager) List(opts ...ReqOption) (us []*User, err error) {
 	err = um.m.get(um.m.uri("users")+um.m.q(opts), &us)
 	return
 }
 
-func (um *UserManager) Search(opts ...reqOption) (us []*User, err error) {
+func (um *UserManager) Search(opts ...ReqOption) (us []*User, err error) {
 	return um.List(opts...)
 }
 
-func (um *UserManager) ListByEmail(email string, opts ...reqOption) (us []*User, err error) {
+func (um *UserManager) ListByEmail(email string, opts ...ReqOption) (us []*User, err error) {
 	opts = append(opts, Parameter("email", email))
 	err = um.m.get(um.m.uri("users-by-email")+um.m.q(opts), &us)
 	return
 }
 
-func (um *UserManager) GetRoles(id string, opts ...reqOption) (roles []*Role, err error) {
+func (um *UserManager) GetRoles(id string, opts ...ReqOption) (roles []*Role, err error) {
 	err = um.m.get(um.m.uri("users", id, "roles")+um.m.q(opts), &roles)
 	return roles, err
 }

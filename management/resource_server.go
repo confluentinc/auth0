@@ -74,7 +74,7 @@ func (r *ResourceServerManager) Create(rs *ResourceServer) (err error) {
 	return r.m.post(r.m.uri("resource-servers"), rs)
 }
 
-func (r *ResourceServerManager) Read(id string, opts ...reqOption) (*ResourceServer, error) {
+func (r *ResourceServerManager) Read(id string, opts ...ReqOption) (*ResourceServer, error) {
 	rs := new(ResourceServer)
 	err := r.m.get(r.m.uri("resource-servers", id)+r.m.q(opts), rs)
 	return rs, err

@@ -166,7 +166,7 @@ func NewTenantManager(m *Management) *TenantManager {
 	return &TenantManager{m}
 }
 
-func (tm *TenantManager) Read(opts ...reqOption) (*Tenant, error) {
+func (tm *TenantManager) Read(opts ...ReqOption) (*Tenant, error) {
 	t := new(Tenant)
 	err := tm.m.get(tm.m.uri("tenants/settings")+tm.m.q(opts), t)
 	return t, err

@@ -108,18 +108,18 @@ func NewLogManager(m *Management) *LogManager {
 	return &LogManager{m}
 }
 
-func (lm *LogManager) Read(id string, opts ...reqOption) (*Log, error) {
+func (lm *LogManager) Read(id string, opts ...ReqOption) (*Log, error) {
 	l := new(Log)
 	err := lm.m.get(lm.m.uri("logs", id), l)
 	return l, err
 }
 
-func (lm *LogManager) List(opts ...reqOption) ([]*Log, error) {
+func (lm *LogManager) List(opts ...ReqOption) ([]*Log, error) {
 	var l []*Log
 	err := lm.m.get(lm.m.uri("logs")+lm.m.q(opts), &l)
 	return l, err
 }
 
-func (lm *LogManager) Search(opts ...reqOption) ([]*Log, error) {
+func (lm *LogManager) Search(opts ...ReqOption) ([]*Log, error) {
 	return lm.List(opts...)
 }
