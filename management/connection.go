@@ -34,7 +34,7 @@ type Connection struct {
 	IsDomainConnection *bool `json:"is_domain_connection,omitempty"`
 
 	// Options for validation.
-	Options *ConnectionOptions `json:"options,omitempty"`
+	Options map[string]interface{} `json:"options,omitempty"`
 
 	// The identifiers of the clients for which the connection is to be
 	// enabled. If the array is empty or the property is not specified, no
@@ -54,81 +54,8 @@ func (c *Connection) String() string {
 	return string(b)
 }
 
-// ConnectionOptions general options
-type ConnectionOptions struct {
-	// Options for validation.
-	Validation map[string]interface{} `json:"validation,omitempty"`
-
-	// Password strength level, can be one of:
-	// "none", "low", "fair", "good", "excellent" or null.
-	PasswordPolicy *string `json:"passwordPolicy,omitempty"`
-
-	// Options for password history policy.
-	PasswordHistory map[string]interface{} `json:"password_history,omitempty"`
-
-	// Options for password expiration policy.
-	PasswordNoPersonalInfo map[string]interface{} `json:"password_no_personal_info,omitempty"`
-
-	// Options for password dictionary policy.
-	PasswordDictionary map[string]interface{} `json:"password_dictionary,omitempty"`
-
-	APIEnableUsers               *bool `json:"api_enable_users,omitempty"`
-	BasicProfile                 *bool `json:"basic_profile,omitempty"`
-	ExtAdmin                     *bool `json:"ext_admin,omitempty"`
-	ExtIsSuspended               *bool `json:"ext_is_suspended,omitempty"`
-	ExtAgreedTerms               *bool `json:"ext_agreed_terms,omitempty"`
-	ExtGroups                    *bool `json:"ext_groups,omitempty"`
-	ExtNestedGroups              *bool `json:"ext_nested_groups,omitempty"`
-	ExtAssignedPlans             *bool `json:"ext_assigned_plans,omitempty"`
-	ExtProfile                   *bool `json:"ext_profile,omitempty"`
-	EnabledDatabaseCustomization *bool `json:"enabledDatabaseCustomization,omitempty"`
-	BruteForceProtection         *bool `json:"brute_force_protection,omitempty"`
-	ImportMode                   *bool `json:"import_mode,omitempty"`
-	DisableSignup                *bool `json:"disable_signup,omitempty"`
-	RequiresUsername             *bool `json:"requires_username,omitempty"`
-
-	// Options for adding parameters in the request to the upstream IdP.
-	UpstreamParams *interface{} `json:"upstream_params,omitempty"`
-
-	ClientID            *string       `json:"client_id,omitempty"`
-	ClientSecret        *string       `json:"client_secret,omitempty"`
-	TenantDomain        *string       `json:"tenant_domain,omitempty"`
-	DomainAliases       []interface{} `json:"domain_aliases,omitempty"`
-	UseWsfed            *bool         `json:"use_wsfed,omitempty"`
-	WaadProtocol        *string       `json:"waad_protocol,omitempty"`
-	WaadCommonEndpoint  *bool         `json:"waad_common_endpoint,omitempty"`
-	AppID               *string       `json:"app_id,omitempty"`
-	AppDomain           *string       `json:"app_domain,omitempty"`
-	MaxGroupsToRetrieve *string       `json:"max_groups_to_retrieve,omitempty"`
-
-	// Scripts for the connection
-	// Allowed keys are: "get_user", "login", "create", "verify", "change_password", "delete" or "change_email".
-	CustomScripts map[string]interface{} `json:"customScripts,omitempty"`
-	// configuration variables that can be used in custom scripts
-	Configuration map[string]interface{} `json:"configuration,omitempty"`
-
-	// Options to add integration with Twilio
-	// https://community.auth0.com/t/using-management-api-to-create-a-twilio-connection/23576/3
-	Totp                *ConnectionOptionsTotp `json:"totp,omitempty"`
-	Name                *string                `json:"name,omitempty"`
-	TwilioSid           *string                `json:"twilio_sid,omitempty"`
-	TwilioToken         *string                `json:"twilio_token,omitempty"`
-	From                *string                `json:"from,omitempty"`
-	Syntax              *string                `json:"syntax,omitempty"`
-	Template            *string                `json:"template,omitempty"`
-	MessagingServiceSid *string                `json:"messaging_service_sid,omitempty"`
-
-	// Adfs
-	AdfsServer *string `json:"adfs_server,omitempty"`
-}
-
 type ConnectionManager struct {
 	m *Management
-}
-
-type ConnectionOptionsTotp struct {
-	TimeStep *int `json:"time_step,omitempty"`
-	Length   *int `json:"length,omitempty"`
 }
 
 func NewConnectionManager(m *Management) *ConnectionManager {

@@ -48,20 +48,7 @@ func TestConnection(t *testing.T) {
 		c.Name = nil     // read-only
 		c.Strategy = nil // read-only
 
-		c.Options = &ConnectionOptions{
-			ExtAdmin:       auth0.Bool(true),
-			ExtGroups:      auth0.Bool(true),
-			ExtProfile:     auth0.Bool(true),
-			ExtIsSuspended: auth0.Bool(false), // try some zero values
-			ExtAgreedTerms: auth0.Bool(false),
-
-			CustomScripts: map[string]interface{}{"get_user": "function( { return callback(null) }"},
-			Configuration: map[string]interface{}{"foo": "bar"},
-
-			RequiresUsername: auth0.Bool(true),
-		}
-
-		cc := c // make a copy so we can compare later
+		c.Options = nil
 
 		err = m.Connection.Update(id, c)
 		if err != nil {
@@ -69,18 +56,6 @@ func TestConnection(t *testing.T) {
 		}
 
 		t.Logf("%v\n", c)
-
-		if c.Options.CustomScripts["get_user"] != cc.Options.CustomScripts["get_user"] {
-			t.Fatal(`unexpected result for "get_user" custom script`)
-		}
-
-		if _, exist := c.Options.Configuration["foo"]; !exist {
-			t.Fatal(`missing key "foo"`)
-		}
-
-		if c.Options.RequiresUsername != cc.Options.RequiresUsername {
-			t.Fatalf("expected requires_username to be %v but got %v", cc.Options.RequiresUsername, c.Options.RequiresUsername)
-		}
 	})
 
 	t.Run("Delete", func(t *testing.T) {
