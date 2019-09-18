@@ -34,7 +34,7 @@ type Connection struct {
 	IsDomainConnection *bool `json:"is_domain_connection,omitempty"`
 
 	// Options for validation.
-	Options map[string]interface{} `json:"options,omitempty"`
+	Options interface{} `json:"options,omitempty"`
 
 	// The identifiers of the clients for which the connection is to be
 	// enabled. If the array is empty or the property is not specified, no
