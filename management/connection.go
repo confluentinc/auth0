@@ -34,7 +34,7 @@ type Connection struct {
 	IsDomainConnection *bool `json:"is_domain_connection,omitempty"`
 
 	// Options for validation.
-	Options interface{} `json:"options,omitempty"`
+	Options *ConnectionOptions `json:"options,omitempty"`
 
 	// The identifiers of the clients for which the connection is to be
 	// enabled. If the array is empty or the property is not specified, no
@@ -52,6 +52,22 @@ type Connection struct {
 func (c *Connection) String() string {
 	b, _ := json.MarshalIndent(c, "", "  ")
 	return string(b)
+}
+
+type ConnectionOptions struct {
+	SigningCert string
+	signingCert string
+	SignInEndpoint string
+	signInEndpoint string
+	signOutEndpoint string
+	SignOutEndpoint string
+	TenantDomain string
+	tenant_domain string
+	domain_aliases []string
+	DomainAliases []string
+	FieldsMap interface{}
+	fields_map interface{}
+	fieldsMap interface{}
 }
 
 type ConnectionManager struct {
