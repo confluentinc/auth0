@@ -39,7 +39,7 @@ type Connection struct {
 	// The identifiers of the clients for which the connection is to be
 	// enabled. If the array is empty or the property is not specified, no
 	// clients are enabled.
-	EnabledClients []interface{} `json:"enabled_clients,omitempty"`
+	EnabledClients []string `json:"enabled_clients,omitempty"`
 
 	// Defines the realms for which the connection will be used (ie: email
 	// domains). If the array is empty or the property is not specified, the
