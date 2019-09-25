@@ -55,19 +55,12 @@ func (c *Connection) String() string {
 }
 
 type ConnectionOptions struct {
-	SigningCert string
-	signingCert string
-	SignInEndpoint string
-	signInEndpoint string
-	signOutEndpoint string
-	SignOutEndpoint string
-	TenantDomain string
-	tenant_domain string
-	domain_aliases []string
-	DomainAliases []string
-	FieldsMap interface{}
-	fields_map interface{}
-	fieldsMap interface{}
+	SigningCert string `json:"signingCert,omitempty"`
+	SignInEndpoint string `json:"signInEndpoint,omitempty"`
+	SignOutEndpoint string  `json:"signOutEndpoint,omitempty"`
+	TenantDomain string  `json:"tenant_domain,omitempty"`
+	DomainAliases []string `json:"domain_aliases,omitempty"`
+	FieldsMap interface{} `json:"fieldsMap,omitempty"`
 }
 
 type ConnectionManager struct {
