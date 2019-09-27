@@ -2,6 +2,7 @@ package management
 
 import (
 	"encoding/json"
+	flowv1 "github.com/confluentinc/cc-structs/kafka/flow/v1"
 	"errors"
 )
 
@@ -34,7 +35,8 @@ type Connection struct {
 	IsDomainConnection *bool `json:"is_domain_connection,omitempty"`
 
 	// Options for validation.
-	Options *ConnectionOptions `json:"options,omitempty"`
+	// Options map[string]interface{} `json:"options,omitempty"`
+	Options *flowv1.ConnectionOptions `json:"options,omitempty"`
 
 	// The identifiers of the clients for which the connection is to be
 	// enabled. If the array is empty or the property is not specified, no
