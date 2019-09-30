@@ -30,7 +30,7 @@ type Management struct {
 	ResourceServer *ResourceServerManager
 
 	// Connection manages Auth0 Connection resources.
-	Connection *ConnectionManager
+	Connection ConnectionManagerInterface
 
 	// CustomDomain manages Auth0 Custom Domains.
 	CustomDomain *CustomDomainManager

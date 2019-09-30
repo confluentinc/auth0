@@ -6,6 +6,15 @@ import (
 	"errors"
 )
 
+type ConnectionManagerInterface interface {
+	Create(c *Connection) error
+	Read(id string, opts ...ReqOption) (*Connection, error)
+	List(opts ...ReqOption) ([]*Connection, error)
+	Update(id string, c *Connection) (err error)
+	Delete(id string) (err error)
+	GetConnectionID(connectionName string) (*string, error)
+}
+
 type Connection struct {
 	// A generated string identifying the connection.
 	ID *string `json:"id,omitempty"`
@@ -69,7 +78,7 @@ type ConnectionManager struct {
 	m *Management
 }
 
-func NewConnectionManager(m *Management) *ConnectionManager {
+func NewConnectionManager(m *Management) ConnectionManagerInterface {
 	return &ConnectionManager{m}
 }
 
