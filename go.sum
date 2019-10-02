@@ -76,6 +76,8 @@ github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20190927213842-b9e158dd
 github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20190927213842-b9e158ddbd19/go.mod h1:LdrcrGMLeFdiOHuWy8Yl8V93m5ffDYeBY1RnHMzETLg=
 github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20190930223330-ee4d1e300d0d h1:R1PCr7/VkJCY8EXO2jKiVwKo0KC8K2m70phtile8b9A=
 github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20190930223330-ee4d1e300d0d/go.mod h1:LdrcrGMLeFdiOHuWy8Yl8V93m5ffDYeBY1RnHMzETLg=
+github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20191002165305-239b7df0dc7b h1:QNDULnjQEerYsR5e3Cu8aI8Dc4Eg0afglJ7W7+y8/DM=
+github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20191002165305-239b7df0dc7b/go.mod h1:LdrcrGMLeFdiOHuWy8Yl8V93m5ffDYeBY1RnHMzETLg=
 github.com/confluentinc/cc-structs/kafka/mail v0.96.0/go.mod h1:unF5Tpaw5Um5XBL1NWqhmgppWUTJcvj63Qi3X1s35p8=
 github.com/confluentinc/cc-structs/kafka/marketo v0.96.0/go.mod h1:pDgbfCouNgbiMasOm4K7IM5IJswQOSp6hPu2NA1+D4g=
 github.com/confluentinc/cc-structs/kafka/org v0.95.0 h1:fMmS7aiIwyYrJXtB3MaIJz6knjHHL+B/2z9O8zhdifM=
