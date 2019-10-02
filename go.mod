@@ -5,8 +5,8 @@ go 1.12
 require (
 	cloud.google.com/go v0.35.1 // indirect
 	github.com/PuerkitoBio/rehttp v0.0.0-20180310210549-11cf6ea5d3e9
-	github.com/confluentinc/cc-structs v0.134.1-0.20190927213842-b9e158ddbd19
-	github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20191002165305-239b7df0dc7b
+	github.com/confluentinc/cc-structs v0.139.0
+	github.com/confluentinc/cc-structs/kafka/flow v0.139.0
 	github.com/googleapis/gax-go v2.0.2+incompatible // indirect
 	github.com/microcosm-cc/bluemonday v1.0.2 // indirect
 	github.com/pkg/errors v0.8.1 // indirect

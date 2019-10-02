@@ -61,6 +61,8 @@ github.com/confluentinc/cc-structs v0.0.0-20190320051855-97f99cb204dc h1:7nrp73k
 github.com/confluentinc/cc-structs v0.0.0-20190320051855-97f99cb204dc/go.mod h1:cfjWsze266jN5TluuH+3Klil3S5wXa0UvymM5PL/pAI=
 github.com/confluentinc/cc-structs v0.134.1-0.20190927213842-b9e158ddbd19 h1:YzrawPRGamjIuaMRm/CSdYsFX50/oO0UbptkZ+kGPaE=
 github.com/confluentinc/cc-structs v0.134.1-0.20190927213842-b9e158ddbd19/go.mod h1:qBq02Xz+ikJE64fkrGLrEvyyqx6+2VrS9b/GF+Wo2fo=
+github.com/confluentinc/cc-structs v0.139.0 h1:icNU/QO7sb/DZjG3AxbDf405czJQwgEWm7NkQeaHqn8=
+github.com/confluentinc/cc-structs v0.139.0/go.mod h1:Eol5LfBLyx7eQ+xvEulYbY1TcoUprexEDi9VaIVY7eY=
 github.com/confluentinc/cc-structs/kafka/auth v0.95.0 h1:YVnlFNk+XjUVTD4aZ2sh10g1d4YEydz/RTdHBY9dwRo=
 github.com/confluentinc/cc-structs/kafka/auth v0.95.0/go.mod h1:Ohfp76jxMfRKxg7S+Jin7SbNVO6KwnVmzfwpoDzD0kw=
 github.com/confluentinc/cc-structs/kafka/auth v0.132.0/go.mod h1:vHlrV5tj1nCEdfAaYbHztk3DN2tw2S9WFBY3hyViJAM=
@@ -78,6 +80,8 @@ github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20190930223330-ee4d1e30
 github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20190930223330-ee4d1e300d0d/go.mod h1:LdrcrGMLeFdiOHuWy8Yl8V93m5ffDYeBY1RnHMzETLg=
 github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20191002165305-239b7df0dc7b h1:QNDULnjQEerYsR5e3Cu8aI8Dc4Eg0afglJ7W7+y8/DM=
 github.com/confluentinc/cc-structs/kafka/flow v0.134.1-0.20191002165305-239b7df0dc7b/go.mod h1:LdrcrGMLeFdiOHuWy8Yl8V93m5ffDYeBY1RnHMzETLg=
+github.com/confluentinc/cc-structs/kafka/flow v0.139.0 h1:H+9z6Loya5n+w8KHUQuvdaCF2nIkr/NSM+iiSBsFStI=
+github.com/confluentinc/cc-structs/kafka/flow v0.139.0/go.mod h1:LdrcrGMLeFdiOHuWy8Yl8V93m5ffDYeBY1RnHMzETLg=
 github.com/confluentinc/cc-structs/kafka/mail v0.96.0/go.mod h1:unF5Tpaw5Um5XBL1NWqhmgppWUTJcvj63Qi3X1s35p8=
 github.com/confluentinc/cc-structs/kafka/marketo v0.96.0/go.mod h1:pDgbfCouNgbiMasOm4K7IM5IJswQOSp6hPu2NA1+D4g=
 github.com/confluentinc/cc-structs/kafka/org v0.95.0 h1:fMmS7aiIwyYrJXtB3MaIJz6knjHHL+B/2z9O8zhdifM=
