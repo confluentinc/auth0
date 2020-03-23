@@ -1,15 +1,15 @@
 package management
 
 import (
-	flowv1 "github.com/confluentinc/cc-structs/kafka/flow/v1"
 	"errors"
+	authv1 "github.com/confluentinc/cc-structs/kafka/auth/v1"
 )
 
 type ConnectionManagerInterface interface {
-	Create(c *flowv1.Connection) error
-	Read(id string, opts ...ReqOption) (*flowv1.Connection, error)
-	List(opts ...ReqOption) ([]*flowv1.Connection, error)
-	Update(id string, c *flowv1.Connection) (err error)
+	Create(c *authv1.Connection) error
+	Read(id string, opts ...ReqOption) (*authv1.Connection, error)
+	List(opts ...ReqOption) ([]*authv1.Connection, error)
+	Update(id string, c *authv1.Connection) (err error)
 	Delete(id string) (err error)
 	GetConnectionID(connectionName string) (string, error)
 }
@@ -22,23 +22,23 @@ func NewConnectionManager(m *Management) ConnectionManagerInterface {
 	return &ConnectionManager{m}
 }
 
-func (cm *ConnectionManager) Create(c *flowv1.Connection) error {
+func (cm *ConnectionManager) Create(c *authv1.Connection) error {
 	return cm.m.post(cm.m.uri("connections"), c)
 }
 
-func (cm *ConnectionManager) Read(id string, opts ...ReqOption) (*flowv1.Connection, error) {
-	c := new(flowv1.Connection)
+func (cm *ConnectionManager) Read(id string, opts ...ReqOption) (*authv1.Connection, error) {
+	c := new(authv1.Connection)
 	err := cm.m.get(cm.m.uri("connections", id)+cm.m.q(opts), c)
 	return c, err
 }
 
-func (cm *ConnectionManager) List(opts ...ReqOption) ([]*flowv1.Connection, error) {
-	var c []*flowv1.Connection
+func (cm *ConnectionManager) List(opts ...ReqOption) ([]*authv1.Connection, error) {
+	var c []*authv1.Connection
 	err := cm.m.get(cm.m.uri("connections")+cm.m.q(opts), &c)
 	return c, err
 }
 
-func (cm *ConnectionManager) Update(id string, c *flowv1.Connection) (err error) {
+func (cm *ConnectionManager) Update(id string, c *authv1.Connection) (err error) {
 	return cm.m.patch(cm.m.uri("connections", id), c)
 }
 
