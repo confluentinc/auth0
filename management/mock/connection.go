@@ -6,23 +6,24 @@ package mock
 
 import (
 	sync "sync"
+
 	github_com_confluentinc_auth0_management "github.com/confluentinc/auth0/management"
-	github_com_confluentinc_cc_structs_kafka_flow_v1 "github.com/confluentinc/cc-structs/kafka/flow/v1"
+	github_com_confluentinc_cc_structs_kafka_auth_v1 "github.com/confluentinc/cc-structs/kafka/auth/v1"
 )
 
 // MockConnectionManagerInterface is a mock of ConnectionManagerInterface interface
 type MockConnectionManagerInterface struct {
 	lockCreate sync.Mutex
-	CreateFunc func(c *github_com_confluentinc_cc_structs_kafka_flow_v1.Connection) error
+	CreateFunc func(c *github_com_confluentinc_cc_structs_kafka_auth_v1.Connection) error
 
 	lockRead sync.Mutex
-	ReadFunc func(id string, opts ...github_com_confluentinc_auth0_management.ReqOption) (*github_com_confluentinc_cc_structs_kafka_flow_v1.Connection, error)
+	ReadFunc func(id string, opts ...github_com_confluentinc_auth0_management.ReqOption) (*github_com_confluentinc_cc_structs_kafka_auth_v1.Connection, error)
 
 	lockList sync.Mutex
-	ListFunc func(opts ...github_com_confluentinc_auth0_management.ReqOption) ([]*github_com_confluentinc_cc_structs_kafka_flow_v1.Connection, error)
+	ListFunc func(opts ...github_com_confluentinc_auth0_management.ReqOption) ([]*github_com_confluentinc_cc_structs_kafka_auth_v1.Connection, error)
 
 	lockUpdate sync.Mutex
-	UpdateFunc func(id string, c *github_com_confluentinc_cc_structs_kafka_flow_v1.Connection) error
+	UpdateFunc func(id string, c *github_com_confluentinc_cc_structs_kafka_auth_v1.Connection) error
 
 	lockDelete sync.Mutex
 	DeleteFunc func(id string) error
@@ -32,7 +33,7 @@ type MockConnectionManagerInterface struct {
 
 	calls struct {
 		Create []struct {
-			C *github_com_confluentinc_cc_structs_kafka_flow_v1.Connection
+			C *github_com_confluentinc_cc_structs_kafka_auth_v1.Connection
 		}
 		Read []struct {
 			Id   string
@@ -43,7 +44,7 @@ type MockConnectionManagerInterface struct {
 		}
 		Update []struct {
 			Id string
-			C  *github_com_confluentinc_cc_structs_kafka_flow_v1.Connection
+			C  *github_com_confluentinc_cc_structs_kafka_auth_v1.Connection
 		}
 		Delete []struct {
 			Id string
@@ -55,7 +56,7 @@ type MockConnectionManagerInterface struct {
 }
 
 // Create mocks base method by wrapping the associated func.
-func (m *MockConnectionManagerInterface) Create(c *github_com_confluentinc_cc_structs_kafka_flow_v1.Connection) error {
+func (m *MockConnectionManagerInterface) Create(c *github_com_confluentinc_cc_structs_kafka_auth_v1.Connection) error {
 	m.lockCreate.Lock()
 	defer m.lockCreate.Unlock()
 
@@ -64,7 +65,7 @@ func (m *MockConnectionManagerInterface) Create(c *github_com_confluentinc_cc_st
 	}
 
 	call := struct {
-		C *github_com_confluentinc_cc_structs_kafka_flow_v1.Connection
+		C *github_com_confluentinc_cc_structs_kafka_auth_v1.Connection
 	}{
 		C: c,
 	}
@@ -84,7 +85,7 @@ func (m *MockConnectionManagerInterface) CreateCalled() bool {
 
 // CreateCalls returns the calls made to Create.
 func (m *MockConnectionManagerInterface) CreateCalls() []struct {
-	C *github_com_confluentinc_cc_structs_kafka_flow_v1.Connection
+	C *github_com_confluentinc_cc_structs_kafka_auth_v1.Connection
 } {
 	m.lockCreate.Lock()
 	defer m.lockCreate.Unlock()
@@ -93,7 +94,7 @@ func (m *MockConnectionManagerInterface) CreateCalls() []struct {
 }
 
 // Read mocks base method by wrapping the associated func.
-func (m *MockConnectionManagerInterface) Read(id string, opts ...github_com_confluentinc_auth0_management.ReqOption) (*github_com_confluentinc_cc_structs_kafka_flow_v1.Connection, error) {
+func (m *MockConnectionManagerInterface) Read(id string, opts ...github_com_confluentinc_auth0_management.ReqOption) (*github_com_confluentinc_cc_structs_kafka_auth_v1.Connection, error) {
 	m.lockRead.Lock()
 	defer m.lockRead.Unlock()
 
@@ -134,7 +135,7 @@ func (m *MockConnectionManagerInterface) ReadCalls() []struct {
 }
 
 // List mocks base method by wrapping the associated func.
-func (m *MockConnectionManagerInterface) List(opts ...github_com_confluentinc_auth0_management.ReqOption) ([]*github_com_confluentinc_cc_structs_kafka_flow_v1.Connection, error) {
+func (m *MockConnectionManagerInterface) List(opts ...github_com_confluentinc_auth0_management.ReqOption) ([]*github_com_confluentinc_cc_structs_kafka_auth_v1.Connection, error) {
 	m.lockList.Lock()
 	defer m.lockList.Unlock()
 
@@ -172,7 +173,7 @@ func (m *MockConnectionManagerInterface) ListCalls() []struct {
 }
 
 // Update mocks base method by wrapping the associated func.
-func (m *MockConnectionManagerInterface) Update(id string, c *github_com_confluentinc_cc_structs_kafka_flow_v1.Connection) error {
+func (m *MockConnectionManagerInterface) Update(id string, c *github_com_confluentinc_cc_structs_kafka_auth_v1.Connection) error {
 	m.lockUpdate.Lock()
 	defer m.lockUpdate.Unlock()
 
@@ -182,7 +183,7 @@ func (m *MockConnectionManagerInterface) Update(id string, c *github_com_conflue
 
 	call := struct {
 		Id string
-		C  *github_com_confluentinc_cc_structs_kafka_flow_v1.Connection
+		C  *github_com_confluentinc_cc_structs_kafka_auth_v1.Connection
 	}{
 		Id: id,
 		C:  c,
@@ -204,7 +205,7 @@ func (m *MockConnectionManagerInterface) UpdateCalled() bool {
 // UpdateCalls returns the calls made to Update.
 func (m *MockConnectionManagerInterface) UpdateCalls() []struct {
 	Id string
-	C  *github_com_confluentinc_cc_structs_kafka_flow_v1.Connection
+	C  *github_com_confluentinc_cc_structs_kafka_auth_v1.Connection
 } {
 	m.lockUpdate.Lock()
 	defer m.lockUpdate.Unlock()
