@@ -190,7 +190,7 @@ func (m *Management) request(method, uri string, v interface{}) error {
 		return newError(res.Body)
 	}
 
-	if res.StatusCode != http.StatusNoContent {
+	if v != nil && res.StatusCode != http.StatusNoContent {
 		defer res.Body.Close()
 		return json.NewDecoder(res.Body).Decode(v)
 	}
